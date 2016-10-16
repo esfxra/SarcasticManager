@@ -18,7 +18,7 @@ class dHelper extends SQLiteOpenHelper {
 
     // initialize static variables for database
     // will be created and un-configured through-out program life cycle
-    static final String DATABASE_NAME = "task";
+    static final String DATABASE_NAME = "sarcasmManager";
     static final String TABLE_NAME = "sarcManager";
 
     // database column names
@@ -42,7 +42,7 @@ class dHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        db.execSQL("create table " + TABLE_NAME + "(TASKS, DUE_DATE, COMPLETED_TASKS) ");
+        db.execSQL("create table " + TABLE_NAME + "(TASKS, DUE_DATE, COMPLETED_TASKS)");
     }
 
     @Override
@@ -67,7 +67,7 @@ class dHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-/*
+
     // adds task to task completed section.
     public boolean taskComp(String comp)
     {
@@ -82,15 +82,11 @@ class dHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-*/
+
     //obtains data from database
     public Cursor getAllData(){
-        SQLiteDatabase db = this.getReadableDatabase();
-        Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
-        return res;
+        SQLiteDatabase db = this.getWritableDatabase();
+        return db.rawQuery("select * from " + TABLE_NAME , null);
     }
-
-
-
 
 }
