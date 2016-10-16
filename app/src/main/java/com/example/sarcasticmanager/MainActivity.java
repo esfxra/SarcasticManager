@@ -1,7 +1,10 @@
+/*
+
+*/
+
+
 package com.example.sarcasticmanager;
 
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.app.AlertDialog;
 import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +20,6 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity {
 
     dHelper firstdb;
-
     // buttons
     Button but2;
     Button bview;
@@ -52,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(View v) {
                         boolean isInserted = firstdb.insertTask(get_task.getText().toString());
-                        if (isInserted = true)
+                        if (isInserted)
                             Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
                         else
                             Toast.makeText(MainActivity.this, "Data Not Inserted", Toast.LENGTH_LONG).show();
@@ -67,16 +69,17 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Cursor res = firstdb.getAllData();
+                        Cursor res;
+                        res = firstdb.getAllData();
                         if (res.getCount() == 0) {
                             //show message
                             showMessage("Error", "Nothing Found");
                             return;
                         }
-                        StringBuffer buffer = new StringBuffer();
+                        StringBuilder buffer = new StringBuilder();
                         while (res.moveToNext()) {
-                            buffer.append("Task: " + res.getString(0) + "\n");
-                            buffer.append("Due Date: " + res.getString(1) + "\n");
+                            buffer.append("Task: ").append(res.getString(0)).append("\n");
+                            //buffer.append("Due Date: ").append(res.getString(1)).append("\n");
                         }
                         //Show all data
                         showMessage("Data", buffer.toString());
