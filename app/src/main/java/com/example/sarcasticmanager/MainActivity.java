@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     // buttons
     Button but2;
     Button bview;
-    Button buttonpg;
     //text field
     EditText get_task;
 

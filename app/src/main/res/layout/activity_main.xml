@@ -48,7 +48,8 @@
         android:text="link page"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/buttonpg" />
+        android:id="@+id/buttonpg"
+        android:onClick="onClick" />
 
     <Button
         android:text="@string/view_data"
@@ -56,4 +57,5 @@
         android:layout_height="41dp"
         android:id="@+id/bView"
         android:visibility="visible" />
+
 </LinearLayout>
