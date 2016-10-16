@@ -27,12 +27,12 @@
             android:layout_weight="3" />
 
         <Button
-            android:text="@string/settings"
+            android:text="@string/enter"
             android:layout_width="68dp"
             android:layout_height="wrap_content"
             android:id="@+id/button2"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"
-            android:contentDescription="@string/settings_descr"
+            android:contentDescription="@string/enter_descr"
             style="@android:style/Widget.Material.Button.Inset"
             android:visibility="visible"
             android:textSize="14sp"
