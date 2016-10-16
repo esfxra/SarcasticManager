@@ -45,11 +45,13 @@
 
 
     <Button
-        android:text="@string/link_page"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:id="@+id/buttonpg"
-        android:onClick="onClick" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView1"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="27dp"
+        android:text="Click Here to Open Second Activity." />
 
     <Button
         android:text="@string/view_data"
