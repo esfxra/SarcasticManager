@@ -27,20 +27,23 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/spinner"
-            android:layout_weight="1" />
+            android:id="@+id/spinnermonth"
+            android:layout_weight="1"
+            android:entries="@array/spinnermonth_array" />
 
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/spinner2"
-            android:layout_weight="1" />
+            android:id="@+id/spinnerday"
+            android:layout_weight="1"
+            android:entries="@array/spinnerday_array" />
 
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/spinner3"
-            android:layout_weight="1" />
+            android:id="@+id/spinneryear"
+            android:layout_weight="1"
+            android:entries="@array/spinneryear_array" />
     </LinearLayout>
 
     <LinearLayout
@@ -52,13 +55,14 @@
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/spinner4"
-            android:layout_weight="1" />
+            android:id="@+id/spinnertime"
+            android:layout_weight="1"
+            android:entries="@array/spinnertime_array" />
 
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/spinner5"
+            android:id="@+id/spinnerampm"
             android:layout_weight="1" />
     </LinearLayout>
 
