@@ -5,6 +5,7 @@
     <string name="enter_descr">inputs string</string>
     <string name="title_activity_login">Sign in</string>
     <string name="view_data">View data</string>
+    <string name="link_page">link page</string>
 
     <string-array name="spinnertime_array">
         <item>12:00</item>
