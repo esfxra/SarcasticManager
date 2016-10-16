@@ -22,11 +22,9 @@ class dHelper extends SQLiteOpenHelper {
     static final String TABLE_NAME = "sarcManager";
 
     // database column names
-    public static final String COL_1 = "EMAIL";
-    public static final String COL_2 = "USERNAME";
-    public static final String COL_3 = "PASSWORD";
-    public static final String COL_4 = "TASKS";
-    public static final String COL_5 = "COMPLETED_TASKS";
+    public static final String COL_1 = "TASKS";
+    public static final String COL_2 = "DUE_DATE";
+    public static final String COL_3 = "COMPLETED_TASKS";
 
     //variables
     long result;
@@ -44,7 +42,7 @@ class dHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        db.execSQL("create table " + TABLE_NAME + "(EMAIL, USERNAME, PASSWORD, TASKS, COMPLETED_TASKS) ");
+        db.execSQL("create table " + TABLE_NAME + "(TASKS, DUE_DATE, COMPLETED_TASKS) ");
     }
 
     @Override
@@ -54,29 +52,13 @@ class dHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    // create a new user and add them to the database
-    public boolean newUser(String email, String username, String pass)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_1, email);
-        contentValues.put(COL_2, username);
-        contentValues.put(COL_3, pass);
-        result = db.insert(TABLE_NAME, null, contentValues);
-        if( result == -1)
-        {
-            return false;
-        }else{
-            return true;
-        }
-    }
-
     // once user is logged in, allow them to create tasks
-    public boolean insertTask(String task)
+    public boolean insertTask(String task)//,String date)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_4, task);
+        contentValues.put(COL_1, task);
+        //contentValues.put(COL_2, date);
         result = db.insert(TABLE_NAME, null, contentValues);
         if(result == -1)
         {
@@ -85,14 +67,13 @@ class dHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-
+/*
     // adds task to task completed section.
-    public boolean taskComp()
+    public boolean taskComp(String comp)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_5, COL_4);
-        contentValues.put(COL_4, "You actually did something!?");
+        contentValues.put(COL_3, comp);
         result = db.insert(TABLE_NAME, null, contentValues);
         if(result == -1)
         {
@@ -101,7 +82,13 @@ class dHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-
+*/
+    //obtains data from database
+    public Cursor getAllData(){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor res = db.rawQuery("select * from " + TABLE_NAME, null);
+        return res;
+    }
 
 
 
