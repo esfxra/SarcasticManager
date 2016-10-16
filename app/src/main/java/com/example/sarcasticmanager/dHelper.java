@@ -28,6 +28,9 @@ class dHelper extends SQLiteOpenHelper {
     public static final String COL_4 = "TASKS";
     public static final String COL_5 = "COMPLETED_TASKS";
 
+    //variables
+    long result;
+
     // constructor
     dHelper(Context context)
     {
@@ -50,4 +53,57 @@ class dHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NAME);
         onCreate(db);
     }
+
+    // create a new user and add them to the database
+    public boolean newUser(String email, String username, String pass)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_1, email);
+        contentValues.put(COL_2, username);
+        contentValues.put(COL_3, pass);
+        result = db.insert(TABLE_NAME, null, contentValues);
+        if( result == -1)
+        {
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    // once user is logged in, allow them to create tasks
+    public boolean insertTask(String task)
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_4, task);
+        result = db.insert(TABLE_NAME, null, contentValues);
+        if(result == -1)
+        {
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    // adds task to task completed section.
+    public boolean taskComp()
+    {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(COL_5, COL_4);
+        contentValues.put(COL_4, "You actually did something!?");
+        result = db.insert(TABLE_NAME, null, contentValues);
+        if(result == -1)
+        {
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+
+
+
+
 }
