@@ -49,12 +49,12 @@ public class MainActivity extends AppCompatActivity {
 
         TextView task1 = new TextView(this);
         task1.setText("This should come from db");
-        task1.setId(5);
+        //task1.setId(5);
         task1.setLayoutParams(new LinearLayout.LayoutParams(
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.WRAP_CONTENT));
 
-        ((LinearLayout) linearLayout).addView(task1);
+        linearLayout.addView(task1);
 
 
     }
