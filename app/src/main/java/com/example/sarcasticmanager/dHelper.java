@@ -23,8 +23,8 @@ class dHelper extends SQLiteOpenHelper {
 
     // database column names
     public static final String COL_1 = "TASKS";
-    public static final String COL_2 = "DUE_DATE";
-    public static final String COL_3 = "COMPLETED_TASKS";
+//    public static final String COL_2 = "DUE_DATE";
+//    public static final String COL_3 = "COMPLETED_TASKS";
 
     //variables
     long result;
@@ -73,7 +73,7 @@ class dHelper extends SQLiteOpenHelper {
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_3, comp);
+//        contentValues.put(COL_3, comp);
         result = db.insert(TABLE_NAME, null, contentValues);
         if(result == -1)
         {

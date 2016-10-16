@@ -12,8 +12,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
@@ -44,18 +43,15 @@ public class MainActivity extends AppCompatActivity {
         AddTask();
         viewAll();
 
-        // This adds tasks to the view at startup
-        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.info);
+        // Query for items from the database and get a cursor back
+        Cursor todoCursor = firstdb.getAllData();
 
-        TextView task1 = new TextView(this);
-        task1.setText("This should come from db");
-        //task1.setId(5);
-        task1.setLayoutParams(new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.MATCH_PARENT,
-                LinearLayout.LayoutParams.WRAP_CONTENT));
-
-        linearLayout.addView(task1);
-
+        // Find ListView to populate
+        ListView lvItems = (ListView) findViewById(R.id.listView);
+        // Setup cursor adapter using cursor from last step
+        TodoCursorAdapter todoAdapter = new TodoCursorAdapter(this, todoCursor);
+        // Attach cursor adapter to the ListView
+        lvItems.setAdapter(todoAdapter);
 
     }
 
