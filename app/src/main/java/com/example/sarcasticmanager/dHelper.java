@@ -67,7 +67,7 @@ class dHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-/*
+
     // adds task to task completed section.
     public boolean taskComp(String comp)
     {
@@ -82,7 +82,7 @@ class dHelper extends SQLiteOpenHelper {
             return true;
         }
     }
-*/
+
     //obtains data from database
     public Cursor getAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
