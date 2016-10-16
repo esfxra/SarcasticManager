@@ -12,6 +12,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
@@ -41,6 +43,18 @@ public class MainActivity extends AppCompatActivity {
 
         AddTask();
         viewAll();
+
+        // This adds tasks to the view at startup
+        LinearLayout linearLayout = (LinearLayout)findViewById(R.id.info);
+
+        TextView task1 = new TextView(this);
+        task1.setText("This should come from db");
+        task1.setId(5);
+        task1.setLayoutParams(new LinearLayout.LayoutParams(
+                LinearLayout.LayoutParams.MATCH_PARENT,
+                LinearLayout.LayoutParams.WRAP_CONTENT));
+
+        ((LinearLayout) linearLayout).addView(task1);
 
 
     }
