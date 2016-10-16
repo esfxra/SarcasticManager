@@ -8,15 +8,37 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.sarcasticmanager.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:gravity="center|bottom">
 
 
-    <EditText
+    <LinearLayout
+        android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:hint="@string/new_task"
-        android:ems="10"
-        android:id="@+id/editText4" />
+        android:layout_height="0dp"
+        android:layout_weight="0.49"
+        android:weightSum="1">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:hint="@string/new_task"
+            android:ems="10"
+            android:id="@+id/editText4"
+            android:layout_weight="0.93" />
+
+        <Button
+            android:text="@string/settings"
+            android:layout_width="68dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/button2"
+            android:elevation="0dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"
+            android:contentDescription="@string/settings_descr"
+            style="@android:style/Widget.Material.Button.Inset"
+            android:visibility="visible"
+            android:textSize="14sp" />
+    </LinearLayout>
 
 </LinearLayout>
