@@ -22,7 +22,8 @@ class dHelper extends SQLiteOpenHelper {
     static final String TABLE_NAME = "sarcManager";
 
     // database column names
-    public static final String COL_1 = "TASKS";
+    public static final String COL_1 = "_id";
+    public static final String COL_2 = "TASKS";
 //    public static final String COL_2 = "DUE_DATE";
 //    public static final String COL_3 = "COMPLETED_TASKS";
 
@@ -42,7 +43,7 @@ class dHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db)
     {
-        db.execSQL("create table " + TABLE_NAME + "(TASKS, DUE_DATE, COMPLETED_TASKS)");
+        db.execSQL("create table " + TABLE_NAME + "(_id int, TASKS varchar(255), DUE_DATE varchar(255), COMPLETED_TASKS varchar(255))");
     }
 
     @Override
@@ -53,11 +54,12 @@ class dHelper extends SQLiteOpenHelper {
     }
 
     // once user is logged in, allow them to create tasks
-    public boolean insertTask(String task)//,String date)
+    public boolean insertTask(int id, String task)//,String date)
     {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put(COL_1, task);
+        contentValues.put(COL_1, id);
+        contentValues.put(COL_2, task);
         //contentValues.put(COL_2, date);
         result = db.insert(TABLE_NAME, null, contentValues);
         if(result == -1)
@@ -68,25 +70,25 @@ class dHelper extends SQLiteOpenHelper {
         }
     }
 
-    // adds task to task completed section.
-    public boolean taskComp(String comp)
-    {
-        SQLiteDatabase db = this.getWritableDatabase();
-        ContentValues contentValues = new ContentValues();
-//        contentValues.put(COL_3, comp);
-        result = db.insert(TABLE_NAME, null, contentValues);
-        if(result == -1)
-        {
-            return false;
-        }else{
-            return true;
-        }
-    }
+//    // adds task to task completed section.
+//    public boolean taskComp(String comp)
+//    {
+//        SQLiteDatabase db = this.getWritableDatabase();
+//        ContentValues contentValues = new ContentValues();
+////        contentValues.put(COL_3, comp);
+//        result = db.insert(TABLE_NAME, null, contentValues);
+//        if(result == -1)
+//        {
+//            return false;
+//        }else{
+//            return true;
+//        }
+//    }
 
     //obtains data from database
     public Cursor getAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
-        return db.rawQuery("select * from " + TABLE_NAME , null);
+        return db.rawQuery("SELECT * FROM " + TABLE_NAME + " WHERE category = " + COL_2, null);
     }
 
 }
