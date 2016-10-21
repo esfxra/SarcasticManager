@@ -10,10 +10,9 @@ import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Spinner;
+import android.widget.ListView;
 import android.widget.Toast;
 
 
@@ -25,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     Button bview;
     //text field
     EditText get_task;
-
+    EditText get_id;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,11 +38,22 @@ public class MainActivity extends AppCompatActivity {
         bview = (Button) findViewById(R.id.bView);
         // insertTask
         get_task = (EditText) findViewById(R.id.get_task);
+//        get_id = (EditText) findViewById(R.id.get_id);
         // taskComp
 
-        AddTask();
-        viewAll();
-
+        //@TODO: Fix populating ListView from database
+//        AddTask();
+//        viewAll();
+//
+//        // Query for items from the database and get a cursor back
+//        Cursor todoCursor = firstdb.getAllData();
+//
+//        // Find ListView to populate
+//        ListView lvItems = (ListView) findViewById(R.id.listView);
+//        // Setup cursor adapter using cursor from last step
+//        TodoCursorAdapter todoAdapter = new TodoCursorAdapter(this, todoCursor);
+//        // Attach cursor adapter to the ListView
+//        lvItems.setAdapter(todoAdapter);
 
     }
 
@@ -53,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        boolean isInserted = firstdb.insertTask(get_task.getText().toString());
+                        boolean isInserted = firstdb.insertTask(Integer.parseInt(get_id.getText().toString()), get_task.getText().toString());
                         if (isInserted)
                             Toast.makeText(MainActivity.this, "Data Inserted", Toast.LENGTH_LONG).show();
                         else
@@ -78,8 +88,8 @@ public class MainActivity extends AppCompatActivity {
                         }
                         StringBuilder buffer = new StringBuilder();
                         while (res.moveToNext()) {
-                            buffer.append("Task: ").append(res.getString(0)).append("\n");
-                            //buffer.append("Due Date: ").append(res.getString(1)).append("\n");
+                            buffer.append("id: ").append(res.getInt(0)).append("\n");
+                            buffer.append("Task: ").append(res.getString(1)).append("\n");
                         }
                         //Show all data
                         showMessage("Data", buffer.toString());
