@@ -26,29 +26,46 @@
 
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:id="@+id/spinnermonth"
+            android:layout_weight="1"
+            android:entries="@array/spinnermonth_array" />
 
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner2"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:id="@+id/spinnerday"
+            android:layout_weight="1"
+            android:entries="@array/spinnerday_array" />
 
         <Spinner
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/spinner3"
-            android:layout_weight="1" />
+            android:layout_height="match_parent"
+            android:id="@+id/spinneryear"
+            android:layout_weight="1"
+            android:entries="@array/spinneryear_array" />
     </LinearLayout>
 
-    <TextView
-        android:text="TextView"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/textView2"
-        android:layout_weight="2" />
+        android:layout_weight="2">
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/spinnertime"
+            android:layout_weight="1"
+            android:entries="@array/spinnertime_array" />
+
+        <Spinner
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/spinnerampm"
+            android:layout_weight="1"
+            android:entries="@array/spinnerampm_array" />
+    </LinearLayout>
 
     <SeekBar
         style="@style/Widget.AppCompat.SeekBar.Discrete"
