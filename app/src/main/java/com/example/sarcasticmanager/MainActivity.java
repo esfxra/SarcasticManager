@@ -18,6 +18,7 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    // database name
     dHelper firstdb;
     // buttons
     Button but2;
@@ -25,6 +26,8 @@ public class MainActivity extends AppCompatActivity {
     //text field
     EditText get_task;
     EditText get_id;
+
+    String appName = "Sarcastic Manager";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

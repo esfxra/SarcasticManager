@@ -18,7 +18,7 @@
         android:layout_height="wrap_content">
 
         <TextView
-            android:text="Sarcastic\nManager"
+            android:text="@string/app_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/textView3"
@@ -28,38 +28,39 @@
             android:clickable="false"
             android:layout_alignBaseline="@+id/imageView2"
             android:textSize="28sp"
-            android:layout_marginLeft="115dp"
+            android:layout_marginStart="115dp"
             android:paddingTop="17dp" />
 
         <ImageView
-            app:srcCompat="@drawable/ic_launcher"
+            app:srcCompat="@mipmap/ic_launcher"
             android:id="@+id/imageView2"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginBottom="10dp" />
+            android:layout_marginBottom="10dp"
+            android:contentDescription="@string/enter"/>
 
     </RelativeLayout>
 
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         tools:ignore="UselessParent"
         android:layout_weight="1">
 
+        <!--suppress AndroidDomInspection -->
         <EditText
             android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:inputType="textPersonName"
-            android:hint="@string/new_task"
+            android:text="@string/enter"
             android:ems="10"
             android:id="@+id/get_task"
-            android:layout_weight="3"
-            android:layout_height="45sp"
-            android:textColorLink="@color/colorPrimary" />
+            />
 
         <Button
             android:text="@string/enter"
-            android:layout_width="68dp"
+            android:layout_width="0dp"
             android:layout_height="40sp"
             android:id="@+id/but2"
             android:textAppearance="@style/TextAppearance.AppCompat.Widget.PopupMenu.Small"
@@ -72,14 +73,15 @@
 
     <ListView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/listView"/>
+        android:layout_height="176dp"
+        android:id="@+id/listView" />
 
     <Button
         android:text="@string/view_data"
         android:layout_width="match_parent"
         android:layout_height="41dp"
         android:id="@+id/bView"
-        android:visibility="visible" />
+        android:visibility="visible"
+        android:layout_gravity="bottom"/>
 
 </LinearLayout>
